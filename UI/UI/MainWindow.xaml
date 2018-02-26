@@ -1,0 +1,58 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="Warehouse" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFF8F8F8" Foreground="Black">
+    <Grid HorizontalAlignment="Left" Height="771" VerticalAlignment="Top" Width="1194">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="TableDesc" Grid.Column="1" HorizontalAlignment="Left" Height="473" Margin="810,80,0,0" VerticalAlignment="Top" Width="200" Background="#FFF8F8F8" BorderBrush="#FFD6D7D8" FontFamily="Yu Gothic UI Semilight" FontSize="20" SelectionChanged="TableDesc_SelectionChanged"/>
+        <ListBox x:Name="TableAvailable" Grid.Column="1" HorizontalAlignment="Left" Height="473" Margin="610,80,0,0" VerticalAlignment="Top" Width="200" Background="#FFF8F8F8" BorderBrush="#FFD6D7D8" FontFamily="Yu Gothic UI Semilight" FontSize="20" SelectionChanged="TableAvailable_SelectionChanged"/>
+        <ListBox x:Name="TableDate" Grid.Column="1" HorizontalAlignment="Left" Height="473" Margin="410,80,0,0" VerticalAlignment="Top" Width="200" Background="#FFF8F8F8" BorderBrush="#FFD6D7D8" FontFamily="Yu Gothic UI Semilight" FontSize="20" SelectionChanged="TableDate_SelectionChanged"/>
+        <ListBox x:Name="TablePrice" Grid.Column="1" HorizontalAlignment="Left" Height="473" Margin="210,80,0,0" VerticalAlignment="Top" Width="200" Background="#FFF8F8F8" BorderBrush="#FFD6D7D8" FontFamily="Yu Gothic UI Semilight" FontSize="20" SelectionChanged="TablePrice_SelectionChanged"/>
+        <Label Content="Product Table" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semilight" FontSize="24" Height="39" Width="157"/>
+        <Grid HorizontalAlignment="Left" Height="771" VerticalAlignment="Top" Width="160" Background="#FF3591D0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Home" Content="Refresh" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="OnHome" Height="50" Grid.ColumnSpan="5"/>
+
+        </Grid>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="OnDelete" Height="50"/>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="OnAdd" Height="50"/>
+        <Button x:Name="Edit" Content="Edit" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="OnEdit" Height="50"/>
+        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="0,696,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="OnExit" Height="50"/>
+        <Grid x:Name="BotContent" Grid.Column="1" HorizontalAlignment="Left" Height="75" Margin="0,696,0,0" VerticalAlignment="Top" Width="1034" Background="#FFD6D7D8"/>
+        <ListBox x:Name="Table" Grid.Column="1" HorizontalAlignment="Left" Height="473" Margin="10,80,0,0" VerticalAlignment="Top" Width="200" Background="#FFF8F8F8" BorderBrush="#FFD6D7D8" FontFamily="Yu Gothic UI Semilight" FontSize="20" SelectionChanged="Table_SelectionChanged"/>
+        <Label x:Name="Informer" Content="Loading..." Grid.Column="1" HorizontalAlignment="Left" Margin="10,707,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semilight" FontSize="24" Height="39" Width="111"/>
+
+        <Grid  Margin="0,0,0,75" x:Name="Loader" Visibility="Hidden" Opacity="0" Background="White" Grid.Column="1">
+
+            <fa:ImageAwesome Icon="Spinner" Spin="True" Height="48" Width="48" Foreground="#FF3591D0" Margin="480,330,506,318" />
+
+        </Grid>
+        <Grid x:Name="AddWindow" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" Height="94" Margin="0,602,0,0" VerticalAlignment="Top" Width="1034" Background="#FFD6D7D8">
+            <Button x:Name="productAdd" Content="Confirm" HorizontalAlignment="Left" Margin="736,20,0,0" VerticalAlignment="Top" Width="160" Height="50" RenderTransformOrigin="0.5,0.5" Foreground="White" FontFamily="Yu Gothic UI Semilight" FontSize="24" Click="productAddGo"/>
+            <TextBox x:Name="productName" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI Semilight"/>
+            <TextBox x:Name="productPrice" HorizontalAlignment="Left" Height="30" Margin="243,56,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="91" FontFamily="Yu Gothic UI Semilight"/>
+            <ComboBox x:Name="productStatus" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="200" Height="30" FontFamily="Yu Gothic UI Semilight"/>
+            <TextBox x:Name="productDescription" HorizontalAlignment="Left" Height="73" Margin="350,12,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="333" FontFamily="Yu Gothic UI Semilight"/>
+            <DatePicker x:Name="productDate" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Height="30" Width="91" FontFamily="Yu Gothic UI Semilight"/>
+            <Button x:Name="AddWindowClose" Content="X" HorizontalAlignment="Left" Margin="974,0,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="CloseAdd" FontFamily="Yu Gothic UI Semilight" FontSize="20" Background="#FFD6D7D8"/>
+
+        </Grid>
+    </Grid>
+
+</Window>
